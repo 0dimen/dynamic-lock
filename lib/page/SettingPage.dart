@@ -1,4 +1,4 @@
-import 'package:dynamic_lock/Password.dart';
+import 'package:dynamic_lock/model/keypad.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -37,6 +37,7 @@ class _SettingPageState extends State<SettingPage> {
                   initialValue: _initialKeypad[index].toString(),
                   keyboardType: TextInputType.number,
                   onChanged: (input) => setState(() {
+                    // 입력 값 처리
                     if (input == '') {
                       input = '0';
                       _initialKeypad[index] = 0;
@@ -54,6 +55,7 @@ class _SettingPageState extends State<SettingPage> {
           ),
         ),
         IconButton(
+            key: const Key('keypadSaveBtn'),
             onPressed: () => () {
                   _keypad.setKeypad(_initialKeypad);
                   Navigator.pop(context, _initialKeypad);
